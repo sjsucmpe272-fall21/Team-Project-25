@@ -17,7 +17,8 @@ A completely decentralized peer-to-peer application based on the blockchain usin
 ### Approach 
 The application would make use of the [Ethereum ledger](https://ethereum.org/en/) along with [IPFS](https://ipfs.io) to store data related to customers and drivers, enabling all aspects of the application to be completely decentralized.
 
-Development of such an application would require frequent experimentation, and we plan to go about that by deploying our own [private Ethereum blockchain network on AWS](https://aws.amazon.com/blogs/database/deploy-smart-contracts-to-your-private-ethereum-blockchain-network-on-aws/).
+Development of such an application would require frequent experimentation and we plan to go about that by deploying our own [private Ethereum blockchain network on AWS](https://aws.amazon.com/blogs/database/deploy-smart-contracts-to-your-private-ethereum-blockchain-network-on-aws/).
+
 
 
 # Proposal 2:
@@ -37,41 +38,22 @@ A recommendations engine will be used to provide healthy food alternatives to th
 ### Dataset
 https://www.kaggle.com/datafiniti/food-ingredient-lists 
 
-
-# Proposal 3
-
-## Decentralized Authentication System
-
-### Introduction
-
-[Industries are currently losing billions of dollars owing to counterfeits present on the market](https://www.oecd.org/sti/ind/2090589.pdf). An application that allows users to determine the authenticity of a product before purchasing it can help curb this issue.
-
-### Abstract
-
-[The blockchain is starting to be used by companies to provide visibility in their supply chain and supply cycle of the product](https://consensys.net/blockchain-use-cases/supply-chain-management/). However, the problem of guaranteeing authenticity to the consumer still remains a challenge.
-
-Companies can associate tokens on the blockchain for each stock keeping unit (SKU) and during the sale to the customer they can provide it to the customer via email or through a QR code that the customer can scan. This QR code can also be scanned by the customer to ensure that the product is authentic before buying it - the application would only verify tokens that exist on the blockchain and let the user know about the history of the product and its authenticity.
-
-Blockchain can prove to be really valuable here due to it being tamper-proof. It can allow companies to provide full transparency to the product and its life cycle.
-
-### Approach
-
-We will create a web app that companies can use to associate its products with and generate tokens on the [Ethereum ledger](https://ethereum.org/en/) along with associate QR codes that they can print on their products. The application can also be extended to allow companies to track the product life cycle on the blockchain.
-
-A customer facing mobile application will also be developed that would allow customers to scan QR codes and verify the authenticity of a product while also getting all the product life cycle information available.
-
-Development of such an application would require frequent experimentation, and we plan to go about that by deploying our own [private Ethereum blockchain network on AWS](https://aws.amazon.com/blogs/database/deploy-smart-contracts-to-your-private-ethereum-blockchain-network-on-aws/).
-
-
-# Proposal 4:
+#Proposal 3:
 
 ## Restaurant deals app
 
 ### Introduction
+A dining app which presents the user with the list of offers available on his/her cards or wallet on the desired cuisine at the restaurants nearby.
 
 
 ### Abstract
 When we plan to dine at or order from a restaurant, we wish there are deals on the cards or wallets we use to pay for the food. A lot of times, the restaurant do have deals in the form of dicounts, cashback or vouchers on creadit cards, wallets etc, but we may not be aware of them.
 
 This app helps the user know the offers at the restaurants nearby on the mode of payment he/she uses to pay.
+
+### Approach
+The app will have Python Flask as the backend and nginx server will host the application. The Flask app will be deployed on AWS EC2 in a private VPC. It contains a chatbot with which the user can chat to update his dining preferences for the day or his general dining preferences. The chatbot uses NLP and machine learning techniques to best interpret the user preferences. The app scrapes the web to find the list of deals which best fit the user. The user's previous preferences are stored so that he/she need not answer everytime. He/she can wish to follow the previous order and the app takes a note of the previous response to find the deals.
+
+We will use API gateway through which the requests to/ responses from the app are sent. The app can be integrated with facebook so that user need not download a seperate app to find the deals. He/she can open facebook look for offers.
+
 
