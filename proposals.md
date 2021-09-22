@@ -65,6 +65,9 @@ The app will have Python Flask as the backend and nginx server will host the app
 
 We will use API gateway through which the requests to/ responses from the app are sent. The app can be integrated with facebook so that user need not download a seperate app to find the deals. He/she can open facebook to look for the offers.
 
+### Dataset
+https://www.kaggle.com/uciml/restaurant-data-with-consumer-ratings
+
 
 # Proposal 4
 
