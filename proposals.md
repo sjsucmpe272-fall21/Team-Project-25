@@ -54,6 +54,6 @@ This app helps the user know the offers at the restaurants nearby on the mode of
 ### Approach
 The app will have Python Flask as the backend and nginx server will host the application. The Flask app will be deployed on AWS EC2 in a private VPC. It contains a chatbot with which the user can chat to update his dining preferences for the day or his general dining preferences. The chatbot uses NLP and machine learning techniques to best interpret the user preferences. The app scrapes the web to find the list of deals which best fit the user. The user's previous preferences are stored so that he/she need not answer everytime. He/she can wish to follow the previous order and the app takes a note of the previous response to find the deals.
 
-We will use API gateway through which the requests to/ responses from the app are sent. The app can be integrated with facebook so that user need not download a seperate app to find the deals. He/she can open facebook look for offers.
+We will use API gateway through which the requests to/ responses from the app are sent. The app can be integrated with facebook so that user need not download a seperate app to find the deals. He/she can open facebook to look for the offers.
 
 
