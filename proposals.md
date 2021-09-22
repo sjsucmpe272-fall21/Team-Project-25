@@ -42,3 +42,11 @@ https://www.kaggle.com/datafiniti/food-ingredient-lists
 
 ## Restaurant deals app
 
+### Introduction
+
+
+### Abstract
+When we plan to dine at or order from a restaurant, we wish there are deals on the cards or wallets we use to pay for the food. A lot of times, the restaurant do have deals in the form of dicounts, cashback or vouchers on creadit cards, wallets etc, but we may not be aware of them.
+
+This app helps the user know the offers at the restaurants nearby on the mode of payment he/she uses to pay.
+
