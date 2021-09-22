@@ -69,6 +69,9 @@ We will use API gateway through which the requests to/ responses from the app ar
 https://www.kaggle.com/uciml/restaurant-data-with-consumer-ratings
 https://www.kaggle.com/heeraldedhia/stop-words-in-28-languages?select=english.txt
 
+### Persona
+Any user with a valid identity proof and bank account who wishes to order food.
+
 # Proposal 4
 
 ## Decentralized Authentication System
