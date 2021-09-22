@@ -103,3 +103,23 @@ Companies trying to prevent counterfeits and users purchasing such products.
 ### Dataset
 
 N/A
+
+
+# Proposal 5
+
+## Flights delay prediction
+
+### Introduction
+The project for predicting delay records so that we can choose the right message.
+
+### Abstract
+Flight delay causes major exasperation in airports. It not only causes financial losses to airline companies but also brings dissatisfaction among passengers. Generally, flight delays represent the period by which the flight is late or cancelled. Flight delay can be considered as a regression problem and as well as a classification problem. The project use various machine learning algorithms to predict whether the flight is delayed.
+
+### Approach
+We aim to build a regression model for predicting the flight arrival delay considering various features which show a strong relation with arrival delay. We have also tried to frame the arrival delay and departure delay as a classification problem and used different classification algorithms. For Predicting the Flight Delay we have used the Regression Algorithms and Classification Algorithms. Then build a web page display through flask technology, and put the analysis and prediction data on the web page.
+
+### Dataset Links
+https://www.kaggle.com/bingecode/us-national-flight-data-2015-2020
+https://www.transportation.gov/individuals/aviation-consumer-protection/air-travel-consumer-reports-2021
+
+
