@@ -18,3 +18,22 @@ A completely decentralized peer-to-peer application based on the blockchain usin
 The application would make use of the [Ethereum ledger](https://ethereum.org/en/) along with [IPFS](https://ipfs.io) to store data related to customers and drivers, enabling all aspects of the application to be completely decentralized.
 
 Development of such an application would require frequent experimentation and we plan to go about that by deploying our own [private Ethereum blockchain network on AWS](https://aws.amazon.com/blogs/database/deploy-smart-contracts-to-your-private-ethereum-blockchain-network-on-aws/).
+
+
+
+# Proposal 1:
+
+## The Food Diary - Logging and Recommendations
+
+### Introduction
+Often times when food items are bought from the grocery store, users dont check the labels, ingrediants that much. Thus, it could happen that they are consuming food which they arent supposed to eat. Some users can have certain dietary restrictions due to some underlying disease, allergens, religious reasons or personal choice. But since the ingrediant list font size is small or if it is difficult to find, it is ignored by the users. 
+
+### Abstract
+The Food Diary app can be used for logging food items by either scanning a food item packet or manual data entry. The user can also specify what types of food ingrediants is he avoiding. When the user scans the ingrediant list, the applications detects any ingrediants which the user wants to avoid and notifies the user immediately. The app can also calculate how much calories were consumed along with breakup of the total carbohydrates, fats and proteins. The user can also set limits as to how much macros and micros he wants to consume and the app can notify him if the limits are breached. The application can also recommend healthy food alternatives by comparing ingrediants from different brands. 
+
+### Approach 
+The frontend of the app will be made in React with a backend of Node. Database to be used will be either MongoDB or MySQL. For scanning the ingrediant list OCR technology will be used.
+A recommendations engine will be used to provide healthy food alternatives to the user based the contents of the food items.
+
+### Dataset
+https://www.kaggle.com/datafiniti/food-ingredient-lists 
