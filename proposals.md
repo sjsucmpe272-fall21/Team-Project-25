@@ -70,7 +70,7 @@ https://www.kaggle.com/uciml/restaurant-data-with-consumer-ratings
 https://www.kaggle.com/heeraldedhia/stop-words-in-28-languages?select=english.txt
 
 ### Persona
-Any person with a valid identity proof and bank account who wishes to order food.
+Any user with a valid identity proof and bank account who wishes to order food.
 
 # Proposal 4
 
@@ -117,6 +117,9 @@ Flight delay causes major exasperation in airports. It not only causes financial
 
 ### Approach
 We aim to build a regression model for predicting the flight arrival delay considering various features which show a strong relation with arrival delay. We have also tried to frame the arrival delay and departure delay as a classification problem and used different classification algorithms. For Predicting the Flight Delay we have used the Regression Algorithms and Classification Algorithms. Then build a web page display through flask technology, and put the analysis and prediction data on the web page.
+
+### Persona
+The traveler who sensitive to aircraft delays
 
 ### Dataset Links
 https://www.kaggle.com/bingecode/us-national-flight-data-2015-2020
