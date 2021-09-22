@@ -15,9 +15,18 @@ Another problem with centralized companies such as Uber is that the pricing and 
 A completely decentralized peer-to-peer application based on the blockchain using smart contracts can help alleviate these problems. Transparent smart contracts would mean that the pricing is based on actual supply and demand and not on arbitrary surge pricing set by a centralized entity/middleman. Such an application would help cut out middlemen such as Uber that don't make the best choices in the interest of their drivers. Cutting out the middlemen would also result in the drivers and riders being connected directly and thus what the riders pay is what the drivers will get.
 
 ### Approach 
+
 The application would make use of the [Ethereum ledger](https://ethereum.org/en/) along with [IPFS](https://ipfs.io) to store data related to customers and drivers, enabling all aspects of the application to be completely decentralized.
 
 Development of such an application would require frequent experimentation, and we plan to go about that by deploying our own [private Ethereum blockchain network on AWS](https://aws.amazon.com/blogs/database/deploy-smart-contracts-to-your-private-ethereum-blockchain-network-on-aws/).
+
+### Persona
+
+People who wish to drive for ridesharing apps and people who want to take such rides.
+
+### Dataset
+
+N/A
 
 
 # Proposal 2:
@@ -80,3 +89,11 @@ We will create a web app that companies can use to associate its products with a
 A customer facing mobile application will also be developed that would allow customers to scan QR codes and verify the authenticity of a product while also getting all the product life cycle information available.
 
 Development of such an application would require frequent experimentation, and we plan to go about that by deploying our own [private Ethereum blockchain network on AWS](https://aws.amazon.com/blogs/database/deploy-smart-contracts-to-your-private-ethereum-blockchain-network-on-aws/).
+
+### Persona
+
+Companies trying to prevent counterfeits and users purchasing such products.
+
+### Dataset
+
+N/A
