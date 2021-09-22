@@ -1,4 +1,4 @@
-# Proposal 0:
+# Proposal 1:
 
 ## Decentralized peer-to-peer ridesharing app
 
@@ -21,7 +21,7 @@ Development of such an application would require frequent experimentation and we
 
 
 
-# Proposal 1:
+# Proposal 2:
 
 ## The Food Diary - Logging and Recommendations
 
@@ -37,3 +37,8 @@ A recommendations engine will be used to provide healthy food alternatives to th
 
 ### Dataset
 https://www.kaggle.com/datafiniti/food-ingredient-lists 
+
+#Proposal 3:
+
+## Restaurant deals app
+
