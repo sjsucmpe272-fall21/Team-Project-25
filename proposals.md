@@ -43,6 +43,9 @@ The Food Diary app can be used for logging food items by either scanning a food 
 The frontend of the app will be made in React with a backend of Node. Database to be used will be either MongoDB or MySQL. For scanning the ingrediant list OCR technology will be used.
 A recommendations engine will be used to provide healthy food alternatives to the user based the contents of the food items.
 
+### Persona
+Users who want to track their food habits and improve overall lifestyle.
+
 ### Dataset
 https://www.kaggle.com/datafiniti/food-ingredient-lists 
 
