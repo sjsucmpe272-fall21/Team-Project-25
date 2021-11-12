@@ -1,6 +1,6 @@
-# Veritas
+# Veritas - Decentralized Authentication System
 
-## Decentralized Authentication System
+## Proposal
 
 ### Introduction
 
@@ -24,4 +24,32 @@ Development of such an application would require frequent experimentation, and w
 
 ### Persona
 
-Companies trying to prevent counterfeits and users purchasing such products.
+Companies trying to prevent counterfeits and users purchasing such products
+
+## Architecture
+
+The following flows describe the high level architecture of Veritas
+
+### Store registers item with Veritas
+
+The first part of the system flow begins with stores regisering their products with Veritas. Doing so allows the stores to associate their products with a unique token on the blockchain (Ethereum ledger). This token is meant to be paired with the item and basically acts as a digital certificate of authenticity.
+
+![](./diagrams/stores-add-sku-veritas.png)
+
+### Customer purchases item
+
+When a customer purchases the item, they will have the token transferred to them by the store as a proof of authenticity. 
+
+![](./diagrams/customer-purchase.png)
+
+### Customer verifies authenticity of item
+
+The customer can verify the authenticity of the item/token they received by checking in with the Veritas application. The Veritas application will check the token on the blockchain and return the product history and the authenticity of the product.
+
+![](./diagrams/customer-verifies-token.png)
+
+### Customer sells the item (2nd sale)
+
+When the customer wants to sell the item to another person (such as someone reselling sneakers), they can transfer the token to the new owner (the buyer can verify the authenticity of the item using the token). This way each item is associated with a single unique token that is transferred from owner to owner, thus curbing counterfeits.
+
+![](./diagrams/customer-sells-item.png)
