@@ -53,3 +53,9 @@ The customer can verify the authenticity of the item/token they received by chec
 When the customer wants to sell the item to another person (such as someone reselling sneakers), they can transfer the token to the new owner (the buyer can verify the authenticity of the item using the token). This way each item is associated with a single unique token that is transferred from owner to owner, thus curbing counterfeits.
 
 ![](./diagrams/customer-sells-item.png)
+
+## Setup
+
+### Requirements
+- `npm install -g ganache-cli`
+- `pip3 install -r requirements.txt`
