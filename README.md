@@ -57,5 +57,11 @@ When the customer wants to sell the item to another person (such as someone rese
 ## Setup
 
 ### Requirements
-- `npm install -g ganache-cli`
+- `npm install -g ganache-cli truffle` (for local development)
 - `pip3 install -r requirements.txt`
+
+### Deploying Veritas Locally
+- Run `ganache-cli`
+- Run `truffle migrate` in the root directory
+    - This will deploy the smart contracts in the local instance of Ethereum we spin up using `ganache-cli`
+

@@ -6,7 +6,7 @@ contract Veritas is VeritasHelper {
 
     mapping (uint => address) public productOwners;
 
-    constructor() public {
+    constructor() {
         ceo = msg.sender;
     }
 
