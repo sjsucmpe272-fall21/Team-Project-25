@@ -4413,24 +4413,14 @@
   "ast": {
     "absolutePath": "project:/contracts/veritas-helper.sol",
     "exportedSymbols": {
-      "VeritasHelper": [
-        176
-      ]
+      "VeritasHelper": [176]
     },
     "id": 177,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 3,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".16",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".16", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:32:1"
       },
@@ -4442,9 +4432,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 176,
-        "linearizedBaseContracts": [
-          176
-        ],
+        "linearizedBaseContracts": [176],
         "name": "VeritasHelper",
         "nameLocation": "43:13:1",
         "nodeType": "ContractDefinition",
@@ -4868,10 +4856,7 @@
                       "id": 34,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "425:7:1",
                       "typeDescriptions": {
@@ -4955,9 +4940,7 @@
               "src": "532:118:1",
               "statements": [
                 {
-                  "assignments": [
-                    50
-                  ],
+                  "assignments": [50],
                   "declarations": [
                     {
                       "constant": false,
@@ -5160,10 +5143,7 @@
                       "id": 56,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "587:7:1",
                       "typeDescriptions": {
@@ -5383,10 +5363,7 @@
                       "id": 74,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "714:7:1",
                       "typeDescriptions": {
@@ -6491,24 +6468,14 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/veritas-helper.sol",
     "exportedSymbols": {
-      "VeritasHelper": [
-        176
-      ]
+      "VeritasHelper": [176]
     },
     "id": 177,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 3,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".16",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".16", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:32:1"
       },
@@ -6520,9 +6487,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 176,
-        "linearizedBaseContracts": [
-          176
-        ],
+        "linearizedBaseContracts": [176],
         "name": "VeritasHelper",
         "nameLocation": "43:13:1",
         "nodeType": "ContractDefinition",
@@ -6946,10 +6911,7 @@
                       "id": 34,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "425:7:1",
                       "typeDescriptions": {
@@ -7033,9 +6995,7 @@
               "src": "532:118:1",
               "statements": [
                 {
-                  "assignments": [
-                    50
-                  ],
+                  "assignments": [50],
                   "declarations": [
                     {
                       "constant": false,
@@ -7238,10 +7198,7 @@
                       "id": 56,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "587:7:1",
                       "typeDescriptions": {
@@ -7461,10 +7418,7 @@
                       "id": 74,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "714:7:1",
                       "typeDescriptions": {

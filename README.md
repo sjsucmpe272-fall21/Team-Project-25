@@ -38,7 +38,7 @@ The first part of the system flow begins with stores regisering their products w
 
 ### Customer purchases item
 
-When a customer purchases the item, they will have the token transferred to them by the store as a proof of authenticity. 
+When a customer purchases the item, they will have the token transferred to them by the store as a proof of authenticity.
 
 ![](./diagrams/customer-purchase.png)
 
@@ -57,12 +57,14 @@ When the customer wants to sell the item to another person (such as someone rese
 ## Setup
 
 ### Requirements
+
 - `npm install -g ganache-cli truffle` (for local development)
 - `pip3 install -r requirements.txt`
 
 ### Deploying Veritas Locally
+
 - Run `ganache-cli`
 - Run `truffle migrate` in the root directory
-    - This will deploy the smart contracts in the local instance of Ethereum we spin up using `ganache-cli`
+  - This will deploy the smart contracts in the local instance of Ethereum we spin up using `ganache-cli`
 - Run `solc --combined-json abi,asm,ast,bin,bin-runtime,devdoc,function-debug,function-debug-runtime,generated-sources,generated-sources-runtime,hashes,metadata,opcodes,srcmap,srcmap-runtime,storage-layout,userdoc -o . veritas.sol` from the ![contracts directory](./contracts).
-    - This requires the `solc` Solidity compiler to be installed on your machine
+  - This requires the `solc` Solidity compiler to be installed on your machine

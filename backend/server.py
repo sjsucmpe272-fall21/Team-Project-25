@@ -9,7 +9,8 @@
 # abi = contract_interface["abi"]
 
 import json
-from flask import Flask, request, jsonify
+
+from flask import Flask, jsonify, request
 from web3 import Web3
 
 app = Flask(__name__)
@@ -17,15 +18,20 @@ app = Flask(__name__)
 
 def transfer_product(w3, from_address, to_address, product_id, p_key):
     nonce = w3.eth.getTransactionCount(from_address)
-    transaction = contract.functions.transferProduct(product_id, to_address).buildTransaction({
-        'gas': 70000,
-        'gasPrice': w3.toWei('200', 'gwei'),
-        'from': from_address,
-        'nonce': nonce
-    })
+    transaction = contract.functions.transferProduct(
+        product_id, to_address
+    ).buildTransaction(
+        {
+            "gas": 70000,
+            "gasPrice": w3.toWei("200", "gwei"),
+            "from": from_address,
+            "nonce": nonce,
+        }
+    )
     signed_txn = w3.eth.account.sign_transaction(transaction, private_key=p_key)
     tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
     w3.eth.wait_for_transaction_receipt(tx_hash)
+
 
 try:
     with open("../contracts/combined.json") as json_file:
@@ -92,16 +98,32 @@ contract = w3.eth.contract(address=contract_address, abi=abi)
 # print(contract.functions.getAllProducts("0xab5EF8da70C23EF987fdA94Aa942621707858Ca7").call())
 
 
-
-
-print(contract.functions.getAllProducts("0xab5EF8da70C23EF987fdA94Aa942621707858Ca7").call())
-print(contract.functions.getAllProducts("0x921aF922c7ed6133e06563F572Ce1EdB427b73de").call())
+print(
+    contract.functions.getAllProducts(
+        "0xab5EF8da70C23EF987fdA94Aa942621707858Ca7"
+    ).call()
+)
+print(
+    contract.functions.getAllProducts(
+        "0x921aF922c7ed6133e06563F572Ce1EdB427b73de"
+    ).call()
+)
 
 # transfer_product(w3, "0x921aF922c7ed6133e06563F572Ce1EdB427b73de", "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe", 0, "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521")
 
-print(contract.functions.getAllProducts("0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe").call())
+print(
+    contract.functions.getAllProducts(
+        "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe"
+    ).call()
+)
 
-transfer_product(w3, "0x921aF922c7ed6133e06563F572Ce1EdB427b73de", "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe", 0, "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521")
+transfer_product(
+    w3,
+    "0x921aF922c7ed6133e06563F572Ce1EdB427b73de",
+    "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe",
+    0,
+    "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521",
+)
 
 
 # DB
