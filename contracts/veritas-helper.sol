@@ -5,6 +5,9 @@ contract VeritasHelper {
 
     struct Product {
         string name;
+        string description;
+        uint sku;
+        uint id;
         address manufacturer;
         address owner;
     }
@@ -21,7 +24,7 @@ contract VeritasHelper {
 
     modifier isSaleAuthorized(address _address, uint256 _id) {
         address owner = products[_id].owner;
-        require(msg.sender == ceo || msg.sender == owner);
+        require(_address == ceo || _address == owner);
         _;
     }
 
@@ -35,5 +38,25 @@ contract VeritasHelper {
         products[_id].owner = _to;
         productCount[_to]++;
         productCount[_from]--;
+    }
+
+    function getCEO() external view returns(address) {
+        return ceo;
+    }
+
+    function getProductOwner(uint _id) external view returns(address) {
+        return productOwners[_id];
+    }
+
+    function getProductCount(address _owner) external view returns(uint) {
+        return productCount[_owner];
+    }
+
+    function getProductCount() external view returns(uint) {
+        return productCount[msg.sender];
+    }
+
+    function getProduct(uint _id) external view returns(Product memory) {
+        return products[_id];
     }
 }
