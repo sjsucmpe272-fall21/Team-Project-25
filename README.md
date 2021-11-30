@@ -64,4 +64,5 @@ When the customer wants to sell the item to another person (such as someone rese
 - Run `ganache-cli`
 - Run `truffle migrate` in the root directory
     - This will deploy the smart contracts in the local instance of Ethereum we spin up using `ganache-cli`
-
+- Run `solc --combined-json abi,asm,ast,bin,bin-runtime,devdoc,function-debug,function-debug-runtime,generated-sources,generated-sources-runtime,hashes,metadata,opcodes,srcmap,srcmap-runtime,storage-layout,userdoc -o . veritas.sol` from the ![contracts directory](./contracts).
+    - This requires the `solc` Solidity compiler to be installed on your machine
