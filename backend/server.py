@@ -9,7 +9,10 @@
 # abi = contract_interface["abi"]
 
 import json
+from flask import Flask, request, jsonify
 from web3 import Web3
+
+app = Flask(__name__)
 
 
 def transfer_product(w3, from_address, to_address, product_id, p_key):
@@ -100,3 +103,19 @@ print(contract.functions.getAllProducts("0x5349aecB8Ad138D441DA6bb53bf43D17797c4
 
 transfer_product(w3, "0x921aF922c7ed6133e06563F572Ce1EdB427b73de", "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe", 0, "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521")
 
+
+# DB
+user = {}
+
+# Flask routes
+@app.route("/signin", methods=["POST"])
+def sign_in():
+    """
+    POST endpoint to sign in a user
+    """
+    request_data = request.json
+    print(request_data)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
