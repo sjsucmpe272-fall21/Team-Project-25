@@ -1,4 +1,5 @@
 //user reducer types
+export const SET_AUTHENTICATED = 'SET_AUTHENTICATED'
 export const LOGIN_USER = 'LOGIN_USER'
 export const GET_CUSTOMER_PRODUCTS = 'GET_CUSTOMER_PRODUCTS'
 

@@ -6,7 +6,7 @@ export const signupUser = (newUser, history) => (dispatch) => {
 
     axios.post('https://veritas-server.herokuapp.com/signup/customer', newUser)
         .then(res => {
-            history.push('/login')
+            history.push(`/customer/${newUser.username}`)
             console.log("signup message"+ res.message)
         })
         .catch(err => {
