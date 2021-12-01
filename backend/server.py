@@ -44,12 +44,12 @@ except Exception as e:
 contract_data = solc_output["contracts"]["veritas.sol:Veritas"]
 abi = contract_data["abi"]
 
-contract_address = Web3.toChecksumAddress("0x9a20f9d147693a5281fb024466d06a83ca7d100f")
+contract_address = Web3.toChecksumAddress("0x73d810bd0ce91eb77ce3ac983f64b2E00a6D1d90")
 
 
 # print(contract_data["abi"])
 
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
+w3 = Web3(Web3.HTTPProvider("https://ropsten.infura.io/v3/ebd7954686ad408eab72c329eeacd8ae"))
 
 print(w3.isConnected())
 
@@ -88,7 +88,6 @@ print(
 
 # w3.eth.wait_for_transaction_receipt(tx_hash)
 
-blockchain_utils.add_product(w3, contract, "Namer", "Descript", 32325, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440", "0x60cb8662a78f4626a88ff1cef35eb9e7ab04599d6c123500fa33c759ed775812")
 
 # print(contract.functions.getAllProducts("0x921aF922c7ed6133e06563F572Ce1EdB427b73de").call())
 # print(contract.functions.getAllProducts("0xab5EF8da70C23EF987fdA94Aa942621707858Ca7").call())
@@ -107,15 +106,18 @@ blockchain_utils.add_product(w3, contract, "Namer", "Descript", 32325, "0xA3a53C
 
 print("=========================")
 
-print(blockchain_utils.get_products(contract, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440"))
+blockchain_utils.add_product(w3, contract, "Namer", "Descript", 32325, "0xc8A16495f3E047EA48240ed8849A65Fef37cA75a", "0x510c4aa78a41b3e7295c59c274864a5bc216ab0537731e393dbd0940a8656541")
+print(blockchain_utils.get_products(contract, "0xc8A16495f3E047EA48240ed8849A65Fef37cA75a"))
 
-blockchain_utils.transfer_product(w3, contract, 0, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440", "0x3083D31AC4E31797e3F34cFf72c6091C8E8d3C79", "0x60cb8662a78f4626a88ff1cef35eb9e7ab04599d6c123500fa33c759ed775812")
+# blockchain_utils.transfer_product(w3, contract, 0, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440", "0x3083D31AC4E31797e3F34cFf72c6091C8E8d3C79", "0x60cb8662a78f4626a88ff1cef35eb9e7ab04599d6c123500fa33c759ed775812")
 
-print(blockchain_utils.get_products(contract, "0x3083D31AC4E31797e3F34cFf72c6091C8E8d3C79"))
+# print(blockchain_utils.get_products(contract, "0x3083D31AC4E31797e3F34cFf72c6091C8E8d3C79"))
 
-print("--------------")
+# print("--------------")
 
-print(blockchain_utils.get_products(contract, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440"))
+# print(blockchain_utils.get_products(contract, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440"))
+
+print("=============================")
 
 # holder = contract.functions.getAllProducts(
 #         "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe"
