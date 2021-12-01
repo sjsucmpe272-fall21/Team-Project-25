@@ -9,11 +9,11 @@
 # abi = contract_interface["abi"]
 
 import json
+import blockchain_utils
 
 from flask import Flask, jsonify, request
 from web3 import Web3
 
-app = Flask(__name__)
 
 
 def transfer_product(w3, from_address, to_address, product_id, p_key):
@@ -44,7 +44,7 @@ except Exception as e:
 contract_data = solc_output["contracts"]["veritas.sol:Veritas"]
 abi = contract_data["abi"]
 
-contract_address = Web3.toChecksumAddress("0xeb1e7cbc4a14ab2ba55d4ea98821f7a1ba4a62a1")
+contract_address = Web3.toChecksumAddress("0x9a20f9d147693a5281fb024466d06a83ca7d100f")
 
 
 # print(contract_data["abi"])
@@ -58,7 +58,7 @@ print(w3.eth.blockNumber)
 # account = "0x00696bDE2008b9CC9AacB582C1da3dF31C1bA0e1"
 # balance = w3.eth.getBalance(account)
 
-w3.eth.defaultAccount = w3.eth.accounts[0]
+# w3.eth.defaultAccount = w3.eth.accounts[0]
 
 print(w3.eth.defaultAccount)
 
@@ -78,9 +78,17 @@ contract = w3.eth.contract(address=contract_address, abi=abi)
 # # print(contract.functions.getProduct(0).call())
 # print(contract.functions.getProductOwner(0).call())
 
-# tx_hash = contract.functions.createProduct("Nike Shoe", "Air Force 1", 4342, "0xab5EF8da70C23EF987fdA94Aa942621707858Ca7").transact()
+print(
+    contract.functions.getAllProducts(
+        "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440"
+    ).call()
+)
+
+# tx_hash = contract.functions.createProduct("Nike Shoe", "Air Force 1", 32, "0x3A1C340361c628fe4F7FD83383a2263DE890f676").transact()
 
 # w3.eth.wait_for_transaction_receipt(tx_hash)
+
+blockchain_utils.add_product(w3, contract, "Namer", "Descript", 32325, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440", "0x60cb8662a78f4626a88ff1cef35eb9e7ab04599d6c123500fa33c759ed775812")
 
 # print(contract.functions.getAllProducts("0x921aF922c7ed6133e06563F572Ce1EdB427b73de").call())
 # print(contract.functions.getAllProducts("0xab5EF8da70C23EF987fdA94Aa942621707858Ca7").call())
@@ -97,47 +105,42 @@ contract = w3.eth.contract(address=contract_address, abi=abi)
 # print(contract.functions.getAllProducts("0x921aF922c7ed6133e06563F572Ce1EdB427b73de").call())
 # print(contract.functions.getAllProducts("0xab5EF8da70C23EF987fdA94Aa942621707858Ca7").call())
 
+print("=========================")
 
-print(
-    contract.functions.getAllProducts(
-        "0xab5EF8da70C23EF987fdA94Aa942621707858Ca7"
-    ).call()
-)
-print(
-    contract.functions.getAllProducts(
-        "0x921aF922c7ed6133e06563F572Ce1EdB427b73de"
-    ).call()
-)
+print(blockchain_utils.get_products(contract, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440"))
+
+blockchain_utils.transfer_product(w3, contract, 0, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440", "0x3083D31AC4E31797e3F34cFf72c6091C8E8d3C79", "0x60cb8662a78f4626a88ff1cef35eb9e7ab04599d6c123500fa33c759ed775812")
+
+print(blockchain_utils.get_products(contract, "0x3083D31AC4E31797e3F34cFf72c6091C8E8d3C79"))
+
+print("--------------")
+
+print(blockchain_utils.get_products(contract, "0xA3a53CDfCEFe14C9b7cb24a1871B3b7b91987440"))
+
+# holder = contract.functions.getAllProducts(
+#         "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe"
+#     ).call()
+
+# print(type(holder[0]))
+
+# print(
+#     contract.functions.getAllProducts(
+#         "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe"
+#     ).call()
+# )
 
 # transfer_product(w3, "0x921aF922c7ed6133e06563F572Ce1EdB427b73de", "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe", 0, "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521")
 
-print(
-    contract.functions.getAllProducts(
-        "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe"
-    ).call()
-)
+# print(
+#     contract.functions.getAllProducts(
+#         "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe"
+#     ).call()
+# )
 
-transfer_product(
-    w3,
-    "0x921aF922c7ed6133e06563F572Ce1EdB427b73de",
-    "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe",
-    0,
-    "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521",
-)
-
-
-# DB
-user = {}
-
-# Flask routes
-@app.route("/signin", methods=["POST"])
-def sign_in():
-    """
-    POST endpoint to sign in a user
-    """
-    request_data = request.json
-    print(request_data)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+# transfer_product(
+#     w3,
+#     "0x921aF922c7ed6133e06563F572Ce1EdB427b73de",
+#     "0x5349aecB8Ad138D441DA6bb53bf43D17797c4dbe",
+#     0,
+#     "0x1f2bf5cb0d91aac04fec1e9ca2c14831f05c2b4b852330bd656e478cb535c521",
+# )

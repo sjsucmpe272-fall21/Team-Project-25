@@ -7,7 +7,8 @@ contract Veritas is VeritasHelper {
         ceo = msg.sender;
     }
 
-    function createProduct(string memory _name, string memory description, uint sku, address _manufacturer) public isCEO(msg.sender) returns(uint) {
+    // function createProduct(string memory _name, string memory description, uint sku, address _manufacturer) public isCEO(msg.sender) returns(uint) {
+    function createProduct(string memory _name, string memory description, uint sku, address _manufacturer) public returns(uint) {
         products.push(Product(_name, description, sku, sku, _manufacturer, _manufacturer));
         productCount[_manufacturer]++;
         uint _id = products.length - 1;
