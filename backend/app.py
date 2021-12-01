@@ -57,9 +57,9 @@ except Exception as e:
 contract_data = solc_output["contracts"]["veritas.sol:Veritas"]
 abi = contract_data["abi"]
 
-contract_address = Web3.toChecksumAddress("0x192d1c341ac31f25afee52ccfa47e6b10ca785b8")
+contract_address = Web3.toChecksumAddress("0x73d810bd0ce91eb77ce3ac983f64b2E00a6D1d90")
 
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
+w3 = Web3(Web3.HTTPProvider("https://ropsten.infura.io/v3/ebd7954686ad408eab72c329eeacd8ae"))
 
 print(w3.isConnected())
 
@@ -285,7 +285,7 @@ def get_company_keys(username):
 
 
 @app.route("/customer/<username>/keys", methods=["GET"])
-def get_company_keys(username):
+def get_customer_keys(username):
     if username == "" or username is None:
         return jsonify({"message": "Invalid username for customer"}), 400
 
