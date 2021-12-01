@@ -12,6 +12,7 @@ import signup from './pages/signup'
 import companyLogin from './pages/companyLogin'
 import companySignup from './pages/companySignup'
 import products from './pages/products'
+import customer from './pages/customer'
 
 import NavigationBar from './components/NavigationBar'
 
@@ -29,6 +30,7 @@ class App extends Component{
               <Route exact path="/companyLogin" component={companyLogin} />
               <Route exact path="/companySignup" component={companySignup} />
               <Route exact path="/products/:username" component={products} />
+              <Route exact path="/customer/:username" component={customer} />
             </Switch>
           </div>
         </Router>
