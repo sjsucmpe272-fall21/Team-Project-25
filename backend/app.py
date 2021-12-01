@@ -151,11 +151,11 @@ def get_customer_information(username):
 
 @app.route("/company/add/product", methods=["POST"])
 def add_product():
-    requset_data = request.json
-    username = requset_data["username"]
-    product_name = requset_data["product_name"]
-    product_description = requset_data["product_description"]
-    product_sku = requset_data["product_sku"]
+    request_data = request.json
+    username = request_data["username"]
+    product_name = request_data["product_name"]
+    product_description = request_data["product_description"]
+    product_sku = request_data["product_sku"]
 
     try:
         blockchain_utils.add_product(w3, contract, product_name, product_description, product_sku, company_name_map[username][1], company_name_map[username][2])
