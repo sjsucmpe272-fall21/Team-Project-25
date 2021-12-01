@@ -1,7 +1,6 @@
 import json
 
 import blockchain_utils
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from web3 import Web3
@@ -15,8 +14,19 @@ companies = {}
 company_name_map = {}
 users_name_map = {}
 
-accounts = ["0xaB3A61f493d59131e75d92A5E729DE7958D0DbCE", "0xB0484a63b209c42fF8Ba7479026D2e3f93C1Fd9C", "0x757f28686f03D6645FaE74daFD4b60eEce37e7fA"]
-keys = ["0xe874dba9c715470c126904b3f1acff4f21bb356843c2d8fc44bd3b4a63047c03", "0x7f719da2e8b03b0e1a13f222ef3cb0cecb06ad4927b33081489b1b5e352e284a", "0xb0bebdaa3d3b862d2533cb459aae2a5efeb9bde7eb66ed7f3deeea13bdd70881"]
+accounts = [
+    "0xaB3A61f493d59131e75d92A5E729DE7958D0DbCE",
+    "0xB0484a63b209c42fF8Ba7479026D2e3f93C1Fd9C",
+    "0x757f28686f03D6645FaE74daFD4b60eEce37e7fA",
+]
+keys = [
+    "0xe874dba9c715470c126904b3f1acff4f21bb356843c2d8fc44bd3b4a63047c03",
+    "0x7f719da2e8b03b0e1a13f222ef3cb0cecb06ad4927b33081489b1b5e352e284a",
+    "0xb0bebdaa3d3b862d2533cb459aae2a5efeb9bde7eb66ed7f3deeea13bdd70881",
+]
+
+# accounts = []
+# keys = []
 
 solc_output = ""
 
@@ -158,7 +168,15 @@ def add_product():
     product_sku = request_data["product_sku"]
 
     try:
-        blockchain_utils.add_product(w3, contract, product_name, product_description, product_sku, company_name_map[username][1], company_name_map[username][2])
+        blockchain_utils.add_product(
+            w3,
+            contract,
+            product_name,
+            product_description,
+            product_sku,
+            company_name_map[username][1],
+            company_name_map[username][2],
+        )
     except Exception as e:
         print("Error adding product to blockchain")
         print(e)
@@ -175,14 +193,29 @@ def sell_product():
     product_id = request_data["product_id"]
 
     if not new_owner in users:
-        return jsonify({"message": "Account you're sending the token to doesn't exist"}), 400
+        return (
+            jsonify({"message": "Account you're sending the token to doesn't exist"}),
+            400,
+        )
 
     try:
-        blockchain_utils.transfer_product(w3, contract, product_id, company_name_map[username][1], users_name_map[new_owner][0], company_name_map[username][2])
+        blockchain_utils.transfer_product(
+            w3,
+            contract,
+            product_id,
+            company_name_map[username][1],
+            users_name_map[new_owner][0],
+            company_name_map[username][2],
+        )
     except Exception as e:
         print("Error transferring token on blockchain")
         print(e)
-        return jsonify({"message": "Error transferring token on blockchain while selling"}), 400
+        return (
+            jsonify(
+                {"message": "Error transferring token on blockchain while selling"}
+            ),
+            400,
+        )
 
     return jsonify({"message": "Product sold successfully to " + new_owner})
 
@@ -195,16 +228,60 @@ def transfer_product():
     product_id = request_data["product_id"]
 
     if not new_owner in users:
-        return jsonify({"message": "Account you're sending the token to doesn't exist"}), 400
+        return (
+            jsonify({"message": "Account you're sending the token to doesn't exist"}),
+            400,
+        )
 
     try:
-        blockchain_utils.transfer_product(w3, contract, product_id, users_name_map[username][0], users_name_map[new_owner][0], users_name_map[username][1])
+        blockchain_utils.transfer_product(
+            w3,
+            contract,
+            product_id,
+            users_name_map[username][0],
+            users_name_map[new_owner][0],
+            users_name_map[username][1],
+        )
     except Exception as e:
         print("Error transferring token on blockchain")
         print(e)
         return jsonify({"message": "Error transferring token on blockchain"}), 400
 
     return jsonify({"message": "Product transferred successfully to " + new_owner})
+
+
+@app.route("/company/<username>/keys", methods=["GET"])
+def get_company_keys(username):
+    if username == "" or username is None:
+        return jsonify({"message": "Invalid username for company"}), 400
+
+    if username in companies:
+        return jsonify(
+            {
+                "message": "Company found",
+                "public_key": company_name_map[username][1],
+                "private_key": company_name_map[username][2],
+            }
+        )
+    else:
+        return jsonify({"message": "Company not found for " + username}), 404
+
+
+@app.route("/customer/<username>/keys", methods=["GET"])
+def get_company_keys(username):
+    if username == "" or username is None:
+        return jsonify({"message": "Invalid username for customer"}), 400
+
+    if username in users:
+        return jsonify(
+            {
+                "message": "Company found",
+                "public_key": users_name_map[username][0],
+                "private_key": users_name_map[username][1],
+            }
+        )
+    else:
+        return jsonify({"message": "Company not found for " + username}), 404
 
 
 if __name__ == "__main__":

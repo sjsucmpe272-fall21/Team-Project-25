@@ -8718,27 +8718,15 @@
   "ast": {
     "absolutePath": "project:/contracts/veritas.sol",
     "exportedSymbols": {
-      "Veritas": [
-        356
-      ],
-      "VeritasHelper": [
-        176
-      ]
+      "Veritas": [356],
+      "VeritasHelper": [176]
     },
     "id": 357,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 178,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".16",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".16", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:32:2"
       },
@@ -8775,10 +8763,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 356,
-        "linearizedBaseContracts": [
-          356,
-          176
-        ],
+        "linearizedBaseContracts": [356, 176],
         "name": "Veritas",
         "nameLocation": "75:7:2",
         "nodeType": "ContractDefinition",
@@ -9120,9 +9105,7 @@
                   "src": "538:29:2"
                 },
                 {
-                  "assignments": [
-                    222
-                  ],
+                  "assignments": [222],
                   "declarations": [
                     {
                       "constant": false,
@@ -9285,9 +9268,7 @@
                   "src": "617:34:2"
                 },
                 {
-                  "assignments": [
-                    236
-                  ],
+                  "assignments": [236],
                   "declarations": [
                     {
                       "constant": false,
@@ -10144,9 +10125,7 @@
               "src": "1221:325:2",
               "statements": [
                 {
-                  "assignments": [
-                    306
-                  ],
+                  "assignments": [306],
                   "declarations": [
                     {
                       "constant": false,
@@ -10297,9 +10276,7 @@
                   "src": "1231:61:2"
                 },
                 {
-                  "assignments": [
-                    317
-                  ],
+                  "assignments": [317],
                   "declarations": [
                     {
                       "constant": false,
@@ -10634,9 +10611,7 @@
                   },
                   "id": 351,
                   "initializationExpression": {
-                    "assignments": [
-                      321
-                    ],
+                    "assignments": [321],
                     "declarations": [
                       {
                         "constant": false,
@@ -10851,27 +10826,15 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/veritas.sol",
     "exportedSymbols": {
-      "Veritas": [
-        356
-      ],
-      "VeritasHelper": [
-        176
-      ]
+      "Veritas": [356],
+      "VeritasHelper": [176]
     },
     "id": 357,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 178,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".16",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".16", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:32:2"
       },
@@ -10908,10 +10871,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 356,
-        "linearizedBaseContracts": [
-          356,
-          176
-        ],
+        "linearizedBaseContracts": [356, 176],
         "name": "Veritas",
         "nameLocation": "75:7:2",
         "nodeType": "ContractDefinition",
@@ -11253,9 +11213,7 @@
                   "src": "538:29:2"
                 },
                 {
-                  "assignments": [
-                    222
-                  ],
+                  "assignments": [222],
                   "declarations": [
                     {
                       "constant": false,
@@ -11418,9 +11376,7 @@
                   "src": "617:34:2"
                 },
                 {
-                  "assignments": [
-                    236
-                  ],
+                  "assignments": [236],
                   "declarations": [
                     {
                       "constant": false,
@@ -12277,9 +12233,7 @@
               "src": "1221:325:2",
               "statements": [
                 {
-                  "assignments": [
-                    306
-                  ],
+                  "assignments": [306],
                   "declarations": [
                     {
                       "constant": false,
@@ -12430,9 +12384,7 @@
                   "src": "1231:61:2"
                 },
                 {
-                  "assignments": [
-                    317
-                  ],
+                  "assignments": [317],
                   "declarations": [
                     {
                       "constant": false,
@@ -12767,9 +12719,7 @@
                   },
                   "id": 351,
                   "initializationExpression": {
-                    "assignments": [
-                      321
-                    ],
+                    "assignments": [321],
                     "declarations": [
                       {
                         "constant": false,
