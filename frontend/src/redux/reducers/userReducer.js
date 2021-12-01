@@ -1,4 +1,4 @@
-import { LOGIN_USER} from '../types'
+import { LOGIN_USER, GET_CUSTOMER_PRODUCTS } from '../types'
 
 const initialState = {
     authenticatedUser : {},
@@ -16,6 +16,12 @@ export default function(state = initialState , action){
                 },
                 authenticated : true
             } 
+
+        case GET_CUSTOMER_PRODUCTS:
+            return {
+                ...state,
+                productsDescription : action.payload,
+            }
 
         default : 
             return {

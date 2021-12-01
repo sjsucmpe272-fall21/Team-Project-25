@@ -1,4 +1,4 @@
-import {LOGIN_COMPANY, GET_PRODUCTS} from '../types'
+import {LOGIN_COMPANY, GET_PRODUCTS, ADD_PRODUCT} from '../types'
 
 const initialState = { 
   authenticatedCompany : {},
@@ -24,6 +24,18 @@ export default function (state = initialState, action){
         return {
           ...state,
           productsDescription : action.payload,
+        }
+
+      case ADD_PRODUCT:
+        return {
+          ...state,
+          productsDescription : {
+            ...state.productsDescription,
+            products : [
+              ...state.productsDescription.products,
+              action.payload
+            ]
+          }
         }
 
       default : 
