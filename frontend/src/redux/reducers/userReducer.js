@@ -1,8 +1,9 @@
-import { LOGIN_USER, GET_CUSTOMER_PRODUCTS , SET_AUTHENTICATED} from '../types'
+import { LOGIN_USER, GET_CUSTOMER_PRODUCTS , SET_AUTHENTICATED, GET_CUSTOMER_KEYS} from '../types'
 
 const initialState = {
     authenticatedUser : {},
-    authenticated : false
+    authenticated : false,
+    keys : ''
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -31,6 +32,12 @@ export default function(state = initialState , action){
                 productsDescription : action.payload,
             }
 
+        case GET_CUSTOMER_KEYS:
+            return {
+                ...state,
+                keys : action.payload,
+            }
+            
         default : 
             return {
                 ...state

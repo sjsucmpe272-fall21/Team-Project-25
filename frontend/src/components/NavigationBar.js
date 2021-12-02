@@ -1,106 +1,102 @@
-import React from "react";
+import React, { Component } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import withStyles from '@material-ui/core/styles/withStyles'
+import MenuIcon from '@material-ui/icons/Menu'
+
 import { Link } from 'react-router-dom'
 
-import { useAuth0 } from "@auth0/auth0-react"
-import {signupUser} from '../redux/actions/userActions'
-
-import store from '../redux/store'
-import { SET_AUTHENTICATED } from '../redux/types'
+import {connect} from 'react-redux'
 
 const styles = (theme) => ({
     ...theme.spread,
     root: {
         flexGrow: 1,
     },
-    logo : {
-        marginRight: theme.spacing(2),
-    },
     title : {
-        fontFamily: 'Bebas Neue',
-        fontSize : '35px',
+        marginLeft: '45px',
+        fontSize : '32px',
         marginTop : '5px',
-        flexGrow: 1
+        flexGrow: 1,
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        fontWeight : '600'
     },
-    login: {
-        color : 'black',
+    button: {
         fontSize : '17px',
         textTransform : 'capitalize',
         fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
     },
-    profile : {
-        width: theme.spacing(5),
-        height: theme.spacing(5),
-        objectFit: 'cover',
-        borderRadius: '50%',
+    appbar : {
+        height : '100px',
+        paddingTop : '10px'
+    }, 
+    menuicon: {
+        fontSize : '25px',
+        marginLeft: '15px',
+        marginTop : '10px'
     },
-    profileB : {
-        marginRight : '15px'
-    }
+    profile: {
+        marginRight : '40px',
+        fontSize : '17px',
+        fontWeight: 600,
+        fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
+    },
 })
 
 
-const NavigationBar = (props) => {
+class NavigationBar extends Component {
+    render(){
+        const { classes } = this.props
+        let mainlink = window.location.href //http://localhost:3000/customer/jui@gmail.com
+        let usernameLink = mainlink.split("/")[4]
+        return (
+            <div >
+                <AppBar position="relative" color="transparent" className={classes.appbar} >
+                    <Toolbar style={{ height: 50}}>
+                        <MenuIcon className={classes.menuicon}/>
+                        <div className={classes.title}>
+                            <span style={{color : '#162328', fontWeight: 700}}>Veritas</span>
+                        </div>
+        
+                        {/* login */}
+                        {!this.props.user.authenticated && !this.props.company.authenticated && (
+                            <Button className={classes.button} component = {Link} to="/login" >
+                                Login
+                            </Button>)}
 
-    const { classes } = props
 
-    const {
-        user,
-        isAuthenticated,
-        loginWithRedirect,
-        // logout 
-    } = useAuth0();
+                        {/* keys */}
+                        {this.props.user.authenticated && (
+                            <Button className={classes.profile} component = {Link} to={`/customer/${this.props.user.authenticatedUser.username}/keys`}>
+                                Keys
+                            </Button>)}
 
-    if(isAuthenticated){
+                        {this.props.company.authenticated && (
+                            <Button className={classes.profile} component = {Link} to={`/company/${this.props.company.authenticatedCompany.username}/keys`}>
+                                Keys
+                            </Button>)}
 
-        let userDetails = {
-           firstName : user.given_name,
-           lastName : user.family_name,
-           profilePicture : user.picture,
-           email : user.email,
-           username : user.nickname
-        }
-        store.dispatch({
-            type : SET_AUTHENTICATED,
-            payload : userDetails
-        })
+                        {/* profile */}
+                        {this.props.user.authenticated && (
+                            <div className={classes.profile} >
+                                {this.props.user.authenticatedUser.username}
+                            </div>)}
 
-        let newUser = {
-            username : userDetails.email,
-            password : 'none'
-        }
-        store.dispatch(signupUser(newUser))
+                        {this.props.company.authenticated && (
+                            <div className={classes.profile} >
+                                {this.props.company.authenticatedCompany.username}
+                            </div>)}
+                    </Toolbar>
+                </AppBar>
+            </div>
+        )
     }
-
-    return (
-        <div >
-            <AppBar position="relative" color="transparent" >
-                <Toolbar style={{ height: 50}}>
-
-                    
-                    <div className={classes.title}>
-                        <span style={{color : '#162328', fontWeight: 700, }}>Veritas</span>
-                    </div>
-
-                    {/* login */}
-                    {!isAuthenticated && (
-                        <Button className={classes.login} color="primary" onClick={() => loginWithRedirect()}>
-                            Login
-                        </Button>)}
-
-                    {/* profile pic */}
-                    {isAuthenticated && ( 
-                        <Button color="primary" component = {Link} to="/" className={classes.profileB}  >
-                            <img className={classes.profile} src={user.picture}  alt="Profile"/>
-                        </Button>
-                    )}
-                </Toolbar>
-            </AppBar>
-        </div>
-    )
 }
 
-export default (withStyles(styles)(NavigationBar))
+const mapStateToProps = (state) => ({
+    user : state.user,
+    company : state.company
+})
+
+export default connect(mapStateToProps, {} )(withStyles(styles)(NavigationBar))

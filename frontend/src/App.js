@@ -13,6 +13,8 @@ import companyLogin from './pages/companyLogin'
 import companySignup from './pages/companySignup'
 import products from './pages/products'
 import customer from './pages/customer'
+import userKeys from './pages/userKeys'
+import companyKeys from './pages/companyKeys'
 
 import NavigationBar from './components/NavigationBar'
 
@@ -31,6 +33,9 @@ class App extends Component{
               <Route exact path="/companySignup" component={companySignup} />
               <Route exact path="/products/:username" component={products} />
               <Route exact path="/customer/:username" component={customer} />
+              <Route exact path="/customer/:username/keys" component={userKeys} />
+              <Route exact path="/company/:username/keys" component={companyKeys} />
+
             </Switch>
           </div>
         </Router>

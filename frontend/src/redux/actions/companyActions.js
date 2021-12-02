@@ -1,10 +1,10 @@
-import {LOGIN_COMPANY, GET_PRODUCTS, ADD_PRODUCT} from '../types'
+import {LOGIN_COMPANY, GET_PRODUCTS, ADD_PRODUCT, GET_COMPANY_KEYS} from '../types'
 import axios from 'axios'
 
 //signup a company
 export const signupCompany = (newCompany, history) => (dispatch) => {
   console.log("signup data " +JSON.stringify(newCompany))
-  axios.post('https://veritas-server.herokuapp.com/signup/company', newCompany)
+  axios.post('http://localhost:5000/signup/company', newCompany)
     .then(res => {
         history.push('/companyLogin')
         console.log("company signup message"+ res.message)
@@ -15,7 +15,7 @@ export const signupCompany = (newCompany, history) => (dispatch) => {
 }
 
 export const loginCompany = (company, history) => (dispatch) => {
-  axios.post('https://veritas-server.herokuapp.com/signin/company', company)
+  axios.post('http://localhost:5000/signin/company', company)
     .then(res => {
       dispatch({
           type : LOGIN_COMPANY,
@@ -30,7 +30,7 @@ export const loginCompany = (company, history) => (dispatch) => {
 }
 
 export const getProducts = (username) => (dispatch) => {
-  axios.get(`https://veritas-server.herokuapp.com/company/${username}`)
+  axios.get(`http://localhost:5000/company/${username}`)
     .then(res => {
       // console.log("getProducts result ; "+ res.data)
       dispatch({
@@ -45,7 +45,7 @@ export const getProducts = (username) => (dispatch) => {
 }
 
 export const sellProduct = (productSellDetails) => (dispatch) => {
-  axios.post(`https://veritas-server.herokuapp.com/sell/product`, productSellDetails)
+  axios.post(`http://localhost:5000/sell/product`, productSellDetails)
     .then(res => {
       console.log("sellProduct result ; "+ res.data)
       // dispatch({
@@ -60,7 +60,7 @@ export const sellProduct = (productSellDetails) => (dispatch) => {
 }
 
 export const addProduct = (productDetails) => (dispatch) => {
-  axios.post(`https://veritas-server.herokuapp.com/company/add/product`, productDetails)
+  axios.post(`http://localhost:5000/company/add/product`, productDetails)
     .then(res => {
       console.log("addProduct result ; "+ res.data)
       dispatch({
@@ -68,6 +68,20 @@ export const addProduct = (productDetails) => (dispatch) => {
           payload : res.data
       })
       console.log("add Product successful")
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+export const getKeysCompany = (username) => (dispatch) => {
+  axios.get(`http://localhost:5000/company/${username}/keys`)
+    .then(res => {
+      dispatch({
+          type : GET_COMPANY_KEYS,
+          payload : res.data
+      })
+      console.log("get Keys company successful")
     })
     .catch(err => {
       console.log(err)

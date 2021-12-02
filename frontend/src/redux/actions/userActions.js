@@ -1,12 +1,12 @@
-import { LOGIN_USER, GET_CUSTOMER_PRODUCTS } from '../types'
+import { LOGIN_USER, GET_CUSTOMER_PRODUCTS, GET_CUSTOMER_KEYS} from '../types'
 import axios from 'axios'
 
 export const signupUser = (newUser, history) => (dispatch) => {
     console.log("in signupUser")
 
-    axios.post('https://veritas-server.herokuapp.com/signup/customer', newUser)
+    axios.post('http://localhost:5000/signup/customer', newUser)
         .then(res => {
-            history.push(`/customer/${newUser.username}`)
+            history.push(`/login`)
             console.log("signup message"+ res.message)
         })
         .catch(err => {
@@ -15,13 +15,13 @@ export const signupUser = (newUser, history) => (dispatch) => {
 }
 
 export const loginUser = (newUser, history) => (dispatch) => {
-    axios.post('https://veritas-server.herokuapp.com/signin/customer', newUser)
+    axios.post('http://localhost:5000/signin/customer', newUser)
         .then(res => {
             dispatch({
                 type : LOGIN_USER,
                 payload : newUser.username
             })
-            history.push('/')
+            history.push(`/customer/${newUser.username}`)
             console.log("login successful")
         })
         .catch(err => {
@@ -30,7 +30,7 @@ export const loginUser = (newUser, history) => (dispatch) => {
 }
 
 export const getCustomerProducts = (username) => (dispatch) => {
-    axios.get(`https://veritas-server.herokuapp.com/customer/${username}`)
+    axios.get(`http://localhost:5000/customer/${username}`)
       .then(res => {
         dispatch({
             type : GET_CUSTOMER_PRODUCTS,
@@ -44,7 +44,7 @@ export const getCustomerProducts = (username) => (dispatch) => {
   }
 
 export const transferOwnership = (productTransferOwnershipDetails) => (dispatch) => {
-    axios.post(`https://veritas-server.herokuapp.com/transfer/product`, productTransferOwnershipDetails)
+    axios.post(`http://localhost:5000/transfer/product`, productTransferOwnershipDetails)
       .then(res => {
         console.log("transferOwnership result ; "+ res.data)
         // dispatch({
@@ -57,3 +57,17 @@ export const transferOwnership = (productTransferOwnershipDetails) => (dispatch)
         console.log(err)
       })
   }
+
+export const getKeys = (username) => (dispatch) => {
+  axios.get(`http://localhost:5000/customer/${username}/keys`)
+    .then(res => {
+      dispatch({
+          type : GET_CUSTOMER_KEYS,
+          payload : res.data
+      })
+      console.log("get Keys successful")
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
