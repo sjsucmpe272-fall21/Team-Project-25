@@ -2,14 +2,16 @@ def get_products(contract, address):
     products = []
     _products = contract.functions.getAllProducts(address).call()
     for product in _products:
-        products.append({
-            "name": product[0],
-            "description": product[1],
-            "sku": product[2],
-            "product_id": product[3],
-            "manufacturer_address": product[4],
-            "owner": product[5]
-        })
+        products.append(
+            {
+                "name": product[0],
+                "description": product[1],
+                "sku": product[2],
+                "product_id": product[3],
+                "manufacturer_address": product[4],
+                "owner": product[5],
+            }
+        )
 
     return products
 
