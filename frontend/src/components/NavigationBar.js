@@ -3,11 +3,12 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import withStyles from '@material-ui/core/styles/withStyles'
-import MenuIcon from '@material-ui/icons/Menu'
+import SideBar from './SideBar'
 
 import { Link } from 'react-router-dom'
-
+import store from '../redux/store'
 import {connect} from 'react-redux'
+import { LOGIN_USER, LOGIN_COMPANY} from '../redux/types'
 
 const styles = (theme) => ({
     ...theme.spread,
@@ -44,17 +45,63 @@ const styles = (theme) => ({
     },
 })
 
+    let mainlink = window.location.href //http://localhost:3000/customer/jui@gmail.com
+    let type = mainlink.split("/")[3]
+    let username = mainlink.split("/")[4]
+
+    if(type === "customer"){
+        store.dispatch({
+            type : LOGIN_USER,
+            payload : username 
+        })
+    }
+    else if(type === "products"){
+        store.dispatch({
+            type : LOGIN_COMPANY,
+            payload : { username : username}  
+        })
+    }
 
 class NavigationBar extends Component {
     render(){
         const { classes } = this.props
-        let mainlink = window.location.href //http://localhost:3000/customer/jui@gmail.com
-        let usernameLink = mainlink.split("/")[4]
+        
+        // let cookie = document.cookie
+        
+        // try {
+        //     let u1Type = cookie.split(";")[0].split("=")[0]
+        //     let u1Value = cookie.split(";")[0].split("=")[1]
+        //     if(type === "customer" && u1Type === "customer"){
+        //         store.dispatch({
+        //             type : LOGIN_COMPANY,
+        //             payload : { username : u1Value}  
+        //         })
+        //     } 
+        //   }
+        //   catch(err) {
+        //     console.log(err)
+        //   }
+        // try {
+        //     let u2Type = cookie.split(";")[1].split("=")[0]
+        //     let u2Value = cookie.split(";")[1].split("=")[1]
+        //     if (type === "products" && u2Type === "company"){
+        //         store.dispatch({
+        //             type : LOGIN_COMPANY,
+        //             payload : { username : u2Value}  
+        //         })
+        //     }
+        //   }
+        //   catch(err) {
+        //     console.log(err)
+        //   }
+        
+ 
+
         return (
             <div >
                 <AppBar position="relative" color="transparent" className={classes.appbar} >
                     <Toolbar style={{ height: 50}}>
-                        <MenuIcon className={classes.menuicon}/>
+                        <SideBar className={classes.menuicon} />
                         <div className={classes.title}>
                             <span style={{color : '#162328', fontWeight: 700}}>Veritas</span>
                         </div>

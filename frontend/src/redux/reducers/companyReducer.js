@@ -4,7 +4,8 @@ const initialState = {
   authenticatedCompany : {},
   authenticated : false,
   productsDescription : '',
-  keys: ''
+  keys: '',
+  error : ''
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -28,17 +29,13 @@ export default function (state = initialState, action){
         }
 
       case ADD_PRODUCT:
+
+      console.log("action.payload"+action.payload)
         return {
           ...state,
-          productsDescription : {
-            ...state.productsDescription,
-            products : [
-              ...state.productsDescription.products,
-              action.payload
-            ]
-          }
         }
 
+        
       case GET_COMPANY_KEYS:
         return {
           ...state,

@@ -1,10 +1,10 @@
-import {LOGIN_COMPANY, GET_PRODUCTS, ADD_PRODUCT, GET_COMPANY_KEYS} from '../types'
+import {LOGIN_COMPANY, GET_PRODUCTS, ADD_PRODUCT, GET_COMPANY_KEYS, SELL_PRODUCT, SET_COMPANY_ERROR} from '../types'
 import axios from 'axios'
 
 //signup a company
 export const signupCompany = (newCompany, history) => (dispatch) => {
   console.log("signup data " +JSON.stringify(newCompany))
-  axios.post('http://localhost:5000/signup/company', newCompany)
+  axios.post('http://54.172.120.22:8080/signup/company', newCompany)
     .then(res => {
         history.push('/companyLogin')
         console.log("company signup message"+ res.message)
@@ -15,12 +15,14 @@ export const signupCompany = (newCompany, history) => (dispatch) => {
 }
 
 export const loginCompany = (company, history) => (dispatch) => {
-  axios.post('http://localhost:5000/signin/company', company)
+  axios.post('http://54.172.120.22:8080/signin/company', company)
     .then(res => {
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       dispatch({
           type : LOGIN_COMPANY,
           payload : { username : company.username}  
       })
+      document.cookie = "company="+company.username
       history.push(`/products/${company.username}`)
       console.log("company login successful")
     })
@@ -30,7 +32,7 @@ export const loginCompany = (company, history) => (dispatch) => {
 }
 
 export const getProducts = (username) => (dispatch) => {
-  axios.get(`http://localhost:5000/company/${username}`)
+  axios.get(`http://54.172.120.22:8080/company/${username}`)
     .then(res => {
       // console.log("getProducts result ; "+ res.data)
       dispatch({
@@ -45,27 +47,30 @@ export const getProducts = (username) => (dispatch) => {
 }
 
 export const sellProduct = (productSellDetails) => (dispatch) => {
-  axios.post(`http://localhost:5000/sell/product`, productSellDetails)
+  axios.post(`http://54.172.120.22:8080/sell/product`, productSellDetails)
     .then(res => {
       console.log("sellProduct result ; "+ res.data)
-      // dispatch({
-      //     type : GET_PRODUCTS,
-      //     payload : res.data
-      // })
+      dispatch({
+          type : SELL_PRODUCT,
+          payload : productSellDetails.product_id
+      })
       console.log("sell Product successful")
     })
     .catch(err => {
-      console.log(err)
+      if(err.message === "Request failed with status code 400"){
+        alert("User not available")
+      }
+      console.log(JSON.stringify("user not available"))
     })
 }
 
 export const addProduct = (productDetails) => (dispatch) => {
-  axios.post(`http://localhost:5000/company/add/product`, productDetails)
+  axios.post(`http://54.172.120.22:8080/company/add/product`, productDetails)
     .then(res => {
       console.log("addProduct result ; "+ res.data)
       dispatch({
           type : ADD_PRODUCT,
-          payload : res.data
+          payload : productDetails
       })
       console.log("add Product successful")
     })
@@ -75,7 +80,7 @@ export const addProduct = (productDetails) => (dispatch) => {
 }
 
 export const getKeysCompany = (username) => (dispatch) => {
-  axios.get(`http://localhost:5000/company/${username}/keys`)
+  axios.get(`http://54.172.120.22:8080/company/${username}/keys`)
     .then(res => {
       dispatch({
           type : GET_COMPANY_KEYS,

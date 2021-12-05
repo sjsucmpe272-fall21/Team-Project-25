@@ -40,14 +40,14 @@ class customer extends Component {
         const {products} = this.props.user.productsDescription
         const username = this.props.match.params.username
 
-        return products.map((product) => <ProductCard key={product.sku} username = {username} product={product} />)
+        return products.map((product) => <ProductCard key={product.product_id} username = {username} product={product} />)
     }
 
     render() {
         const { classes } = this.props
         const {productsDescription} = this.props.user
         const username = this.props.match.params.username
-        
+        // console.log("cookie :"+document.cookie)
         
         return (
             <Grid container direction="row" className={classes.main}>

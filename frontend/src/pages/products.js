@@ -58,9 +58,9 @@ const styles = (theme) => ({
 class products extends Component {
     state = {
         open : false,
-        product_name : '',
-        product_description : '',
-        product_sku : ''
+        productName : '',
+        productDescription : '',
+        productSku : ''
     }
 
     componentDidMount(){
@@ -77,9 +77,9 @@ class products extends Component {
     handleClose = () => {
         this.setState({
             open : false,
-            product_name : '',
-            product_description : '',
-            product_sku : ''
+            productName : '',
+            productDescription : '',
+            productSku : ''
         })
     }
 
@@ -93,17 +93,16 @@ class products extends Component {
         const {products} = this.props.company.productsDescription
         const username = this.props.match.params.username
 
-        return products.map((product) => <ProductCard key={product.sku} username = {username} product={product} />)
+        return products.map((product) => <ProductCard key={product.product_id} username = {username} product={product} />)
     }
 
-    handleAddProduct(){
+    handleAddProduct = () => {
         let productDetails = {
-            username : this.props.username,
+            username : this.props.match.params.username,
             product_name : this.state.productName,
             product_description : this.state.productDescription,
-            product_sku : this.state.productSku,
+            product_sku : parseInt(this.state.productSku)
         }
-
         console.log("addProduct :"+JSON.stringify(productDetails))
         this.props.addProduct(productDetails)
     }
@@ -111,7 +110,7 @@ class products extends Component {
     render() {
         const { classes } = this.props
         const {productsDescription} = this.props.company
-
+       
         return (
             <Grid container direction="row" className={classes.main}>
                 <Grid item sm={10} className={classes.head}>
@@ -133,23 +132,22 @@ class products extends Component {
                         </div>
                     </DialogTitle>
                     <DialogContent >
-                    <form onSubmit={this.handleSubmit} style={{margin : 'auto 15px'}}>
+                    {/* <form onSubmit={this.handleSubmit} style={{margin : 'auto 15px'}}> */}
                         <TextField name="productName" id="productName" label="Product Name" type="text" onChange={this.handleChange}
                             style={{marginBottom: '10px'}} value={this.state.productName} variant="outlined" fullWidth />
 
                         <TextField name="productDescription" id="productDescription" label="Product Description" type="text" onChange={this.handleChange}
                             style={{marginBottom: '10px'}} value={this.state.productDescription} variant="outlined" fullWidth />
 
-                        <TextField name="product_sku" id="product_sku" label="Product SKU" type="text" onChange={this.handleChange}
-                            style={{marginBottom: '10px'}} value={this.state.product_sku} variant="outlined" fullWidth />
+                        <TextField name="productSku" id="productSku" label="Product SKU" type="text" onChange={this.handleChange}
+                            style={{marginBottom: '10px'}} value={this.state.productSku} variant="outlined" fullWidth />
 
-                        <Button type="submit" variant="contained" className={classes.button} onClick={this.handleSellProduct} >
+                        <Button type="submit" variant="contained" className={classes.button} onClick={this.handleAddProduct} >
                             Add Product
                         </Button>
-                    </form>
+                    {/* </form> */}
                     </DialogContent>
                 </Dialog>
-
             </Grid>
         )
     }

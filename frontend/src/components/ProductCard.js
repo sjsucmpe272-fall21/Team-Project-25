@@ -75,24 +75,26 @@ class ProductCard extends Component {
         })
     }
 
-    handleSellProduct(){
-        const {sku} = this.props.product
+    handleSellProduct = () => {
+        const {product_id} = this.props.product
         let productSellDetails = {
             username : this.props.username,
             new_owner : this.state.newOwner,
-            product_id : sku
+            product_id : product_id
         }
 
         console.log("sellProduct :"+JSON.stringify(productSellDetails))
         this.props.sellProduct(productSellDetails)
+
+        this.handleClose()
     }
 
-    handleTransferOwnership(){
-        const {sku} = this.props.product
+    handleTransferOwnership = () => {
+        const {product_id} = this.props.product
         let productTransferOwnershipDetails = {
             username : this.props.username,
             new_owner : this.state.newOwner,
-            product_id : sku
+            product_id : product_id
         }
 
         console.log("transferOwnership :"+JSON.stringify(productTransferOwnershipDetails))
@@ -136,7 +138,7 @@ class ProductCard extends Component {
                         </div>
                     </DialogTitle>
                     <DialogContent>
-                    <form onSubmit={this.handleSubmit} style={{margin : 'auto 15px'}}>
+                    {/* <form onSubmit={this.handleSubmit} style={{margin : 'auto 15px'}}> */}
 
                         <TextField name="newOwner" id="newOwner" label="New Owner Email ID" type="text" onChange={this.handleChange}
                             style={{marginBottom: '10px'}} value={this.state.newOwner} variant="outlined" fullWidth />
@@ -150,7 +152,7 @@ class ProductCard extends Component {
                                 Transfer Ownership
                             </Button>
                         }
-                    </form>
+                    {/* </form> */}
                     </DialogContent>
                 </Dialog>
             </Grid>
