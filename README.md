@@ -1,5 +1,7 @@
 # Veritas - Decentralized Authentication System
 
+## [Full pitch and demo of working application](https://www.youtube.com/watch?v=7Cv6QtWtr9w)
+
 ## Proposal
 
 ### Introduction
@@ -27,6 +29,13 @@ Development of such an application would require frequent experimentation, and w
 Companies trying to prevent counterfeits and users purchasing such products
 
 ## Architecture
+
+The diagram below captures the high-level architecture of the application:
+![](./diagrams/veritas-architecture.png)
+
+- We implemented the front-end applicaion that the user interfaces with in React since that offered us the most flexibility and it's what our team was most familiar with
+- We implemented the back-end server using Flask in Python as that gave us the capability to quickly get the application up and running
+- We implemented the smart contracts in Solidity and deployed them to the Ethereum Ropsten test network
 
 The following flows describe the high level architecture of Veritas
 
@@ -66,5 +75,5 @@ When the customer wants to sell the item to another person (such as someone rese
 - Run `ganache-cli`
 - Run `truffle migrate` in the root directory
   - This will deploy the smart contracts in the local instance of Ethereum we spin up using `ganache-cli`
-- Run `solc --combined-json abi,asm,ast,bin,bin-runtime,devdoc,function-debug,function-debug-runtime,generated-sources,generated-sources-runtime,hashes,metadata,opcodes,srcmap,srcmap-runtime,storage-layout,userdoc -o . veritas.sol` from the ![contracts directory](./contracts).
+- Run `solc --combined-json abi,asm,ast,bin,bin-runtime,devdoc,function-debug,function-debug-runtime,generated-sources,generated-sources-runtime,hashes,metadata,opcodes,srcmap,srcmap-runtime,storage-layout,userdoc -o . veritas.sol` from the [contracts directory](./contracts).
   - This requires the `solc` Solidity compiler to be installed on your machine
